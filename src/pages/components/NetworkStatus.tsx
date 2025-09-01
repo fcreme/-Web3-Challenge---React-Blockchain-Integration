@@ -3,12 +3,17 @@ import { sepolia } from 'wagmi/chains'
 import { 
   Alert, 
   AlertTitle, 
-  Box 
+  Box,
+  Button,
+  Link as MuiLink
 } from '@mui/material'
 import { 
   CheckCircle as CheckIcon,
-  Warning as WarningIcon
+  Warning as WarningIcon,
+  Link as LinkIcon,
+  AccountBalance as FaucetIcon
 } from '@mui/icons-material'
+import { TESTNET_CONFIG } from '../../lib/web3'
 
 export default function NetworkStatus() {
   const { isConnected, chainId } = useAppStore()
@@ -62,11 +67,48 @@ export default function NetworkStatus() {
           alignItems: 'center',
           lineHeight: 1.2
         }}>
-          {isCorrectNetwork ? 'Connected to Sepolia Testnet' : 'Wrong Network Detected'}
+          {isCorrectNetwork ? '✅ Connected to Sepolia Testnet' : '⚠️ Wrong Network Detected'}
         </AlertTitle>
-        {!isCorrectNetwork && (
-          <Box sx={{ fontSize: '0.75rem', mt: 0.5 }}>
-            Please switch to Sepolia network to interact with the contracts.
+        
+        {isCorrectNetwork ? (
+          <Box sx={{ mt: 1 }}>
+            <Box sx={{ fontSize: '0.875rem', mb: 1, color: 'text.secondary' }}>
+              You're connected to the Sepolia testnet. This is a safe environment for testing.
+            </Box>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<LinkIcon />}
+                onClick={() => window.open('https://sepolia.etherscan.io/', '_blank')}
+                sx={{ fontSize: '0.75rem' }}
+              >
+                Sepolia Explorer
+              </Button>
+              <Button
+                size="small"
+                variant="outlined"
+                startIcon={<FaucetIcon />}
+                onClick={() => window.open(TESTNET_CONFIG.faucetUrl, '_blank')}
+                sx={{ fontSize: '0.75rem' }}
+              >
+                Get Test ETH
+              </Button>
+            </Box>
+          </Box>
+        ) : (
+          <Box sx={{ fontSize: '0.875rem', mt: 1, color: 'text.secondary' }}>
+            Please switch to Sepolia network to interact with the test contracts.
+            <br />
+            <MuiLink 
+              href="https://sepoliafaucet.com/" 
+              target="_blank" 
+              rel="noopener"
+              sx={{ display: 'inline-flex', alignItems: 'center', mt: 0.5 }}
+            >
+              <FaucetIcon sx={{ fontSize: '1rem', mr: 0.5 }} />
+              Get free test ETH here
+            </MuiLink>
           </Box>
         )}
       </Alert>

@@ -99,7 +99,20 @@ export default function Dashboard() {
                   px: { xs: 2, sm: 0 }
                 }}
               >
-                Experience the future of decentralized finance. Interact with ERC20 tokens on the Sepolia network with a modern, intuitive interface.
+                Experience the future of decentralized finance. Interact with ERC20 tokens on the Sepolia testnet with a modern, intuitive interface. 
+                <Box component="span" sx={{ 
+                  display: 'inline-block', 
+                  mt: 1, 
+                  p: 1, 
+                  borderRadius: '8px', 
+                  background: 'rgba(76, 175, 80, 0.1)', 
+                  border: '1px solid rgba(76, 175, 80, 0.3)',
+                  fontSize: '0.875rem',
+                  fontWeight: 600,
+                  color: '#4caf50'
+                }}>
+                  🧪 TESTNET MODE - Safe for testing
+                </Box>
               </Typography>
               
               <Box sx={{ 
