@@ -363,8 +363,48 @@ export default function ActionsForm(){
                 }
               }}
             >
-             <MenuItem value="DAI">DAI</MenuItem>
-             <MenuItem value="USDC">USDC</MenuItem>
+                                                       <MenuItem 
+                 value="DAI"
+                 sx={{
+                   backgroundColor: formData.token === 'DAI' ? 'rgba(76, 175, 80, 0.1)' : 'transparent',
+                   color: formData.token === 'DAI' ? '#4caf50' : 'inherit',
+                   fontWeight: formData.token === 'DAI' ? 600 : 400,
+                   '&:hover': {
+                     backgroundColor: 'rgba(76, 175, 80, 0.15)',
+                   },
+                   '&.Mui-selected': {
+                     backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                     color: '#4caf50',
+                     fontWeight: 600,
+                     '&:hover': {
+                       backgroundColor: 'rgba(76, 175, 80, 0.25)',
+                     }
+                   }
+                 }}
+               >
+                 DAI
+               </MenuItem>
+                           <MenuItem 
+                value="USDC"
+                sx={{
+                  backgroundColor: formData.token === 'USDC' ? 'rgba(76, 175, 80, 0.1)' : 'transparent',
+                  color: formData.token === 'USDC' ? '#4caf50' : 'inherit',
+                  fontWeight: formData.token === 'USDC' ? 600 : 400,
+                  '&:hover': {
+                    backgroundColor: 'rgba(76, 175, 80, 0.15)',
+                  },
+                  '&.Mui-selected': {
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    color: '#4caf50',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: 'rgba(76, 175, 80, 0.25)',
+                    }
+                  }
+                }}
+              >
+                USDC
+              </MenuItem>
            </Select>
          </FormControl>
 

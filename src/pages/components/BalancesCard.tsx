@@ -166,8 +166,8 @@ export default function BalancesCard(){
                   color="secondary" 
                   variant="outlined"
                   sx={{ 
-                    borderColor: 'rgba(118, 75, 162, 0.5)',
-                    color: '#764ba2',
+                    borderColor: 'rgba(76, 175, 80, 0.5)',
+                    color: '#4caf50',
                     fontWeight: 600
                   }}
                 />
