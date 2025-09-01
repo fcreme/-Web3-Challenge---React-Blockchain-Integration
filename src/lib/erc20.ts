@@ -1,5 +1,5 @@
-export const DAI = '0x6B175474E89094C44Da98b954EedeAC495271d0F' as const
-export const USDC = '0xdAC17F958D2ee523a2206206994597C13D831ec7' as const
+export const DAI = '0x1D70D57ccD2798323232B2dD027B3aBcA5C00091' as const
+export const USDC = '0xC891481A0AaC630F4D89744ccD2C7D2C4215FD47' as const
 
 export const ERC20_ABI = [
   { "type":"function","name":"balanceOf","stateMutability":"view","inputs":[{"name":"a","type":"address"}],"outputs":[{"type":"uint256"}]},
