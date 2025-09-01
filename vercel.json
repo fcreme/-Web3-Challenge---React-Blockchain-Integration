@@ -1,5 +1,5 @@
 {
-  "buildCommand": "chmod +x vercel-build.sh && ./vercel-build.sh",
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install --legacy-peer-deps",
