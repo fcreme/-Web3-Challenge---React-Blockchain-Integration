@@ -2,7 +2,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { useAccount, useChainId, useSwitchChain } from 'wagmi'
 import { useAppStore } from '../store/useAppStore'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { sepolia } from 'wagmi/chains'
 import { 
   AppBar, 
@@ -16,14 +16,17 @@ import {
 import { 
   AccountBalanceWallet as WalletIcon,
   Warning as WarningIcon,
-  Bolt as BoltIcon
+  Bolt as BoltIcon,
+  Help as HelpIcon
 } from '@mui/icons-material'
+import WalletHelp from './WalletHelp'
 
 export default function ConnectBar() {
   const { address, isConnected } = useAccount()
   const chainId = useChainId()
   const { switchChain, isPending: isSwitching } = useSwitchChain()
   const { setConnection } = useAppStore()
+  const [helpOpen, setHelpOpen] = useState(false)
 
   // Sync wallet state with Zustand store
   useEffect(() => {
@@ -84,6 +87,35 @@ export default function ConnectBar() {
           gap: { xs: 1.5, sm: 2 }, 
           flexWrap: 'wrap' 
         }}>
+          {!isConnected && (
+            <Fade in timeout={800}>
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={<HelpIcon />}
+                onClick={() => setHelpOpen(true)}
+                sx={{
+                  borderRadius: '12px',
+                  px: 2,
+                  py: 1,
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  textTransform: 'none',
+                  borderColor: 'rgba(255, 255, 255, 0.2)',
+                  color: 'text.primary',
+                  backdropFilter: 'blur(10px)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    borderColor: 'rgba(255, 255, 255, 0.4)',
+                    background: 'rgba(255, 255, 255, 0.08)'
+                  }
+                }}
+              >
+                Ayuda
+              </Button>
+            </Fade>
+          )}
           {isConnected && address && (
             <Fade in timeout={800}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
@@ -171,6 +203,8 @@ export default function ConnectBar() {
           </Fade>
         </Box>
       </Toolbar>
+      
+      <WalletHelp open={helpOpen} onClose={() => setHelpOpen(false)} />
     </AppBar>
   );
 }
