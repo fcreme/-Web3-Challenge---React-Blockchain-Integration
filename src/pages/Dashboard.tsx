@@ -1,5 +1,5 @@
-import { Box, Container, Card, CardContent, Typography, Button } from '@mui/material'
-import { History as HistoryIcon } from '@mui/icons-material'
+import { Box, Container, Card, CardContent, Typography, Button, Fade } from '@mui/material'
+import { History as HistoryIcon, Token as TokenIcon, SwapHoriz as SwapIcon } from '@mui/icons-material'
 import ConnectBar from './components/ConnectBar'
 import NetworkStatus from './components/NetworkStatus'
 import BalancesCard from './components/BalancesCard'
@@ -9,185 +9,292 @@ import { Link } from 'react-router-dom'
 
 export default function Dashboard() {
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #000000 0%, #111111 100%)' }}>
+    <Box sx={{ 
+      minHeight: '100vh', 
+      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Animated background elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(76, 175, 80, 0.05) 0%, transparent 50%)
+          `,
+          zIndex: 0
+        }}
+      />
+      
       <ConnectBar />
       
-      <Container maxWidth="xl" sx={{ py: 4 }}>
-        {/* Hero Section - Left Aligned */}
-        <Box 
-          sx={{ 
-            textAlign: 'left', 
-            mb: 8,
-            py: { xs: 4, sm: 6, md: 8 },
-            position: 'relative',
-            overflow: 'hidden',
-            maxWidth: '100%',
-            borderRadius: '16px',
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid rgba(255, 255, 255, 0.05)',
-            backdropFilter: 'blur(10px)'
-          }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
-              zIndex: -1
-            }}
-          />
-          
-          <Typography 
-            variant="h1" 
+      <Container maxWidth="xl" sx={{ py: 6, position: 'relative', zIndex: 1 }}>
+        {/* Hero Section */}
+        <Fade in timeout={600}>
+          <Box 
             sx={{ 
-              mb: 3,
-              background: 'linear-gradient(135deg, #ffffff 0%, #667eea 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              fontWeight: 800,
-              letterSpacing: '-0.02em',
-              textAlign: 'left',
-              fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-              lineHeight: 1.1
+              textAlign: 'center',
+              mb: { xs: 6, md: 8 },
+              p: { xs: 4, md: 6 },
+              borderRadius: '32px',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(20px)',
+              boxShadow: '0 25px 80px rgba(0, 0, 0, 0.3)',
+              position: 'relative',
+              overflow: 'hidden'
             }}
           >
-            Web3 Challenge Dashboard
-          </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              color: 'text.secondary',
-              maxWidth: 600,
-              mb: 4,
-              fontWeight: 400,
-              textAlign: 'left',
-              fontSize: { xs: '1rem', sm: '1.25rem' }
-            }}
-          >
-            Interact with ERC20 tokens on the Sepolia network
-          </Typography>
-          
-          <Button
-            component={Link}
-            to="/transfers"
-            variant="outlined"
-            size="large"
-            startIcon={<HistoryIcon />}
-            sx={{
-              borderColor: 'rgba(255, 255, 255, 0.3)',
-              color: 'text.primary',
-              fontSize: { xs: '0.875rem', sm: '1rem' },
-              fontWeight: 600,
-              px: { xs: 3, sm: 4 },
-              py: { xs: 1.5, sm: 2 },
-              borderRadius: '12px',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                borderColor: 'primary.main',
-                backgroundColor: 'rgba(102, 126, 234, 0.1)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 25px rgba(102, 126, 234, 0.3)'
-              }
-            }}
-          >
-            View Transaction History
-          </Button>
-        </Box>
+            {/* Background gradient animation */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'radial-gradient(circle at 30% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%)',
+                animation: 'pulse 4s ease-in-out infinite alternate',
+                '@keyframes pulse': {
+                  '0%': { opacity: 0.3 },
+                  '100%': { opacity: 0.6 }
+                }
+              }}
+            />
+            
+            <Box sx={{ position: 'relative', zIndex: 1 }}>
+              <Typography 
+                variant="h1" 
+                sx={{ 
+                  fontWeight: 900,
+                  fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+                  lineHeight: 1.1,
+                  mb: 3,
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4caf50 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: '0 4px 20px rgba(102, 126, 234, 0.3)'
+                }}
+              >
+                Web3 Challenge
+              </Typography>
+              
+              <Typography 
+                variant="h2" 
+                sx={{ 
+                  fontWeight: 400,
+                  fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.375rem' },
+                  lineHeight: 1.6,
+                  color: 'text.secondary',
+                  mb: 5,
+                  maxWidth: '800px',
+                  mx: 'auto',
+                  px: { xs: 2, sm: 0 }
+                }}
+              >
+                Experience the future of decentralized finance. Interact with ERC20 tokens on the Sepolia network with a modern, intuitive interface.
+              </Typography>
+              
+              <Box sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: 3,
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexWrap: 'wrap'
+              }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => window.open('https://github.com/fcreme/-Web3-Challenge---React-Blockchain-Integration', '_blank')}
+                  sx={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    borderRadius: '16px',
+                    px: 4,
+                    py: 2,
+                    fontSize: '1.125rem',
+                    fontWeight: 700,
+                    textTransform: 'none',
+                    boxShadow: '0 8px 32px rgba(102, 126, 234, 0.4)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    minWidth: { xs: '200px', sm: '180px' },
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 40px rgba(102, 126, 234, 0.6)',
+                      background: 'linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)'
+                    }
+                  }}
+                >
+                  View on GitHub
+                </Button>
+                
+                <Button
+                  component={Link}
+                  to="/transfers"
+                  variant="contained"
+                  size="large"
+                  startIcon={<HistoryIcon />}
+                  sx={{
+                    background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
+                    borderRadius: '16px',
+                    px: 4,
+                    py: 2,
+                    fontSize: '1.125rem',
+                    fontWeight: 700,
+                    textTransform: 'none',
+                    boxShadow: '0 8px 32px rgba(76, 175, 80, 0.4)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    minWidth: { xs: '200px', sm: '180px' },
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 40px rgba(76, 175, 80, 0.6)',
+                      background: 'linear-gradient(135deg, #45a049 0%, #3d8b40 100%)'
+                    }
+                  }}
+                >
+                  View Transaction History
+                </Button>
+                
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => window.open('https://sepolia.etherscan.io/', '_blank')}
+                  sx={{
+                    borderColor: 'rgba(255, 255, 255, 0.2)',
+                    borderRadius: '16px',
+                    px: 4,
+                    py: 2,
+                    fontSize: '1.125rem',
+                    fontWeight: 600,
+                    textTransform: 'none',
+                    color: 'text.primary',
+                    backdropFilter: 'blur(10px)',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    minWidth: { xs: '200px', sm: '180px' },
+                    '&:hover': {
+                      borderColor: 'rgba(255, 255, 255, 0.4)',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)'
+                    }
+                  }}
+                >
+                  Sepolia Explorer
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Fade>
 
         {/* Network Status */}
-        <NetworkStatus />
+        <Fade in timeout={1000}>
+          <Box sx={{ mb: 6 }}>
+            <NetworkStatus />
+          </Box>
+        </Fade>
 
-        {/* Main Content - Single Column Layout */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, maxWidth: '100%' }}>
+        {/* Main Content - Enhanced Layout */}
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 8, maxWidth: '100%' }}>
           {/* Token Balances */}
-          <Card 
-            sx={{ 
-              background: 'rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-              borderRadius: '16px',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                borderColor: 'rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4)',
-                transform: 'translateY(-2px)'
-              }
-            }}
-          >
-            <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-              <BalancesCard />
-            </CardContent>
-          </Card>
+          <Fade in timeout={1200}>
+            <Card 
+              sx={{ 
+                borderRadius: '24px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              <CardContent sx={{ p: { xs: 4, sm: 5 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+                  <TokenIcon sx={{ fontSize: 32, color: 'primary.main' }} />
+                  <Typography 
+                    variant="h4" 
+                    sx={{ 
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      fontSize: { xs: '1.75rem', sm: '2rem' }
+                    }}
+                  >
+                    Token Balances
+                  </Typography>
+                </Box>
+                <BalancesCard />
+              </CardContent>
+            </Card>
+          </Fade>
 
           {/* Token Operations */}
-          <Card 
-            sx={{ 
-              background: 'rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-              borderRadius: '16px',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                borderColor: 'rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4)',
-                transform: 'translateY(-2px)'
-              }
-            }}
-          >
-            <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-              <Typography 
-                variant="h4" 
-                sx={{ 
-                  mb: 3,
-                  fontWeight: 600,
-                  color: 'text.primary',
-                  fontSize: { xs: '1.5rem', sm: '2rem' }
-                }}
-              >
-                Token Operations
-              </Typography>
-              <ActionsForm />
-            </CardContent>
-          </Card>
+          <Fade in timeout={1400}>
+            <Card 
+              sx={{ 
+                borderRadius: '24px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              <CardContent sx={{ p: { xs: 4, sm: 5 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+                  <SwapIcon sx={{ fontSize: 32, color: 'primary.main' }} />
+                  <Typography 
+                    variant="h4" 
+                    sx={{ 
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      fontSize: { xs: '1.75rem', sm: '2rem' }
+                    }}
+                  >
+                    Token Operations
+                  </Typography>
+                </Box>
+                <ActionsForm />
+              </CardContent>
+            </Card>
+          </Fade>
 
           {/* Recent Events */}
-          <Card 
-            sx={{ 
-              background: 'rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-              borderRadius: '16px',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                borderColor: 'rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.4)',
-                transform: 'translateY(-2px)'
-              }
-            }}
-          >
-            <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
-              <Typography 
-                variant="h4" 
-                sx={{ 
-                  mb: 3,
-                  fontWeight: 600,
-                  color: 'text.primary',
-                  fontSize: { xs: '1.5rem', sm: '2rem' }
-                }}
-              >
-                Recent Events
-              </Typography>
-              <EventsTable />
-            </CardContent>
-          </Card>
+          <Fade in timeout={1600}>
+            <Card 
+              sx={{ 
+                borderRadius: '24px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
+              <CardContent sx={{ p: { xs: 4, sm: 5 } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 4 }}>
+                  <HistoryIcon sx={{ fontSize: 32, color: 'primary.main' }} />
+                  <Typography 
+                    variant="h4" 
+                    sx={{ 
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      fontSize: { xs: '1.75rem', sm: '2rem' }
+                    }}
+                  >
+                    Recent Events
+                  </Typography>
+                </Box>
+                <EventsTable />
+              </CardContent>
+            </Card>
+          </Fade>
         </Box>
       </Container>
     </Box>
