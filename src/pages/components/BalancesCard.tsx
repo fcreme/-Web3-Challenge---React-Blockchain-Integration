@@ -8,8 +8,7 @@ import {
   Card, 
   CardContent,
   Chip,
-  Fade,
-  Skeleton
+  Fade
 } from '@mui/material'
 import { 
   Refresh as RefreshIcon,
