@@ -40,9 +40,9 @@ export default function Dashboard() {
           <Box 
             sx={{ 
               textAlign: 'center',
-              mb: { xs: 6, md: 8 },
-              p: { xs: 4, md: 6 },
-              borderRadius: '32px',
+              mb: { xs: 5, md: 6 },
+              p: { xs: 3, md: 4 },
+              borderRadius: '28px',
               background: 'rgba(255, 255, 255, 0.03)',
               border: '1px solid rgba(255, 255, 255, 0.08)',
               backdropFilter: 'blur(20px)',
@@ -73,9 +73,9 @@ export default function Dashboard() {
                 variant="h1" 
                 sx={{ 
                   fontWeight: 900,
-                  fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
+                  fontSize: { xs: '2rem', sm: '2.75rem', md: '3.25rem' },
                   lineHeight: 1.1,
-                  mb: 3,
+                  mb: 2.5,
                   background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4caf50 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -90,11 +90,11 @@ export default function Dashboard() {
                 variant="h2" 
                 sx={{ 
                   fontWeight: 400,
-                  fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.375rem' },
+                  fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
                   lineHeight: 1.6,
                   color: 'text.secondary',
-                  mb: 5,
-                  maxWidth: '800px',
+                  mb: 4,
+                  maxWidth: '700px',
                   mx: 'auto',
                   px: { xs: 2, sm: 0 }
                 }}
@@ -105,7 +105,7 @@ export default function Dashboard() {
               <Box sx={{ 
                 display: 'flex', 
                 flexDirection: { xs: 'column', sm: 'row' },
-                gap: 3,
+                gap: 2.5,
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexWrap: 'wrap'
@@ -116,15 +116,15 @@ export default function Dashboard() {
                   onClick={() => window.open('https://github.com/fcreme/-Web3-Challenge---React-Blockchain-Integration', '_blank')}
                   sx={{
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    borderRadius: '16px',
-                    px: 4,
-                    py: 2,
-                    fontSize: '1.125rem',
+                    borderRadius: '14px',
+                    px: 3.5,
+                    py: 1.5,
+                    fontSize: '1rem',
                     fontWeight: 700,
                     textTransform: 'none',
                     boxShadow: '0 8px 32px rgba(102, 126, 234, 0.4)',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    minWidth: { xs: '200px', sm: '180px' },
+                    minWidth: { xs: '180px', sm: '160px' },
                     '&:hover': {
                       transform: 'translateY(-2px)',
                       boxShadow: '0 12px 40px rgba(102, 126, 234, 0.6)',
@@ -143,15 +143,15 @@ export default function Dashboard() {
                   startIcon={<HistoryIcon />}
                   sx={{
                     background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
-                    borderRadius: '16px',
-                    px: 4,
-                    py: 2,
-                    fontSize: '1.125rem',
+                    borderRadius: '14px',
+                    px: 3.5,
+                    py: 1.5,
+                    fontSize: '1rem',
                     fontWeight: 700,
                     textTransform: 'none',
                     boxShadow: '0 8px 32px rgba(76, 175, 80, 0.4)',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    minWidth: { xs: '200px', sm: '180px' },
+                    minWidth: { xs: '180px', sm: '160px' },
                     '&:hover': {
                       transform: 'translateY(-2px)',
                       boxShadow: '0 12px 40px rgba(76, 175, 80, 0.6)',
@@ -168,17 +168,17 @@ export default function Dashboard() {
                   onClick={() => window.open('https://sepolia.etherscan.io/', '_blank')}
                   sx={{
                     borderColor: 'rgba(255, 255, 255, 0.2)',
-                    borderRadius: '16px',
-                    px: 4,
-                    py: 2,
-                    fontSize: '1.125rem',
+                    borderRadius: '14px',
+                    px: 3.5,
+                    py: 1.5,
+                    fontSize: '1rem',
                     fontWeight: 600,
                     textTransform: 'none',
                     color: 'text.primary',
                     backdropFilter: 'blur(10px)',
                     background: 'rgba(255, 255, 255, 0.05)',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    minWidth: { xs: '200px', sm: '180px' },
+                    minWidth: { xs: '180px', sm: '160px' },
                     '&:hover': {
                       borderColor: 'rgba(255, 255, 255, 0.4)',
                       background: 'rgba(255, 255, 255, 0.1)',
